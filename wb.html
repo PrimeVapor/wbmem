@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildberries - Магазин</title>
+    <style>
+        /* Базовые стили */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+            color: #333;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: #cb11ab;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 40px;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #fff;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            color: #cb11ab;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .nav-links span {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        /* Основной контент */
+        .hero-banner {
+            background: linear-gradient(135deg, #cb11ab 0%, #481173 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-banner h1 {
+            margin: 0 0 10px 0;
+            font-size: 36px;
+        }
+
+        .hero-banner p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Сетка товаров */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding-bottom: 60px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-brand {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: #ffcc00;
+            margin-right: 5px;
+        }
+
+        .price-block {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #cb11ab;
+        }
+
+        .old-price {
+            font-size: 13px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff3c6d;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-bar {
+                margin: 10px 0;
+                width: 100%;
+            }
+            .nav-links {
+                font-size: 10px;
+                gap: 10px;
+            }
+            .nav-links span {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container header-content">
+            Wildberries
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Я ищу...">
+                <button>🔍</button>
+            </div>
+
+            <nav class="nav-links">
+                
+                    <span>🛍️</span>
+                    Корзина
+                
+                
+                    <span>👤</span>
+                    Профиль
+                
+                
+                    <span>📍</span>
+                    Адреса
+                
+            </nav>
+        </div>
+    </header>
+
+    <!-- Баннер -->
+    <section class="hero-banner">
+        <div class="container">
+            <h1>Распродажа сезона</h1>
+            <p>Скидки до 70% на одежду и обувь</p>
+        </div>
+    </section>
+
+    <!-- Сетка товаров -->
+    <main class="container">
+        <h2 style="margin-bottom: 20px;">Популярные товары</h2>
+        
+        <div class="products-grid">
+            <!-- Товар 1 -->
+            <div class="product-card">
+                <div class="discount-badge">-45%</div>
+                <img src="https://via.placeholder.com/300x400/333333/ffffff?text=Платье" alt="Платье" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">ZARINA</div>
+                    <div class="product-title">Платье женское летнее сарафан из вискозы</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>1245 отзывов</span>
+                    </div>
+                    <div class="price-block">
+                        <span class="current-price">1 990 ₽</span>
+                        <span class="old-price">3 600 ₽</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 2 -->
+            <div class="product-card">
+                <div class="discount-badge">-20%</div>
+                <img src="https://via.placeholder.com/300x400/555555/ffffff?text=Кроссовки" alt="Кроссовки" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">LACOSTE</div>
+                    <div class="product-title">Кроссовки мужские спортивные для бега</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span>890 отзывов</span>
+                    </div>
+                    <div class="price-block">
+                        <span class="current-price">4 500 ₽</span>
+                        <span class="old-price">5 600 ₽</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 3 -->
+            <div class="product-card">
+                <div class="discount-badge">-60%</div>
+                <img src="https://via.placeholder.com/300x400/777777/ffffff?text=Рюкзак" alt="Рюкзак" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">DEELUXE</div>
+                    <div class="product-title">Рюкзак городской водонеп
